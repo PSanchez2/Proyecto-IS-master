@@ -1,0 +1,148 @@
+<nav class="navbar navbar-expand-lg bg-dark ">
+    <div class="container-fluid">
+      <!--<a class="navbar-brand" href="#">Menú</a>-->
+      <button type="button" class="btn btn-defailt btn-lg" routerLink="/registrar-usuario">
+        <i class="fa fa-fw fa-user"></i>
+        <span > Cuenta</span>
+      </button>
+      
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="#" routerLink="/inicio">Principal</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Mas Vendidos</a>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Categorias
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <li><a class="dropdown-item" href="#">Mis productos</a></li>
+              <li><a class="dropdown-item" href="#">Estadisticas</a></li>
+              <li><hr class="dropdown-divider"></li>
+              <li><a class="dropdown-item" href="#">Something else here</a></li>
+            </ul>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link disabled">Servicio al Cliente</a>
+          </li>
+        </ul>
+        <form class="d-flex" role="search">
+          <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+          <button class="btn btn-outline-success" type="submit">Search</button>
+        </form>
+      </div>
+    </div>
+  </nav>
+  <div class="container mt-5 mb-5">
+    <div class="row">
+      <div class="col-lg-6 offset-lg-3">
+        <div class="card">
+          <div class="card-header text-center">
+            <h3>Formulario de registro</h3>
+          </div>
+          <div class="card-body border border-info">
+            <form class="mt-3" [formGroup]="FormularioRegistro" (ngSubmit)="RegistrarUsuario()">
+              <div class="mb-3">
+                  <label for="inputEmail4">Nombre Completo</label>
+                  <input type="text" formControlName="NombreCompleto"
+                  class="form-control" id="inputEmail4" placeholder="Nombre Completo">
+                    <div class="text-danger"
+                    *ngIf="FormularioRegistro.get('NombreCompleto')?.hasError('required') && FormularioRegistro.get('NombreCompleto')?.touched">
+                      <span>El nombre completo es un campo obligatorio</span>
+                    </div>
+                </div>
+              
+              <div class="mb-3">
+                <label for="inputPassword4">Correo</label>
+                  <input type="email" formControlName="Correo"
+                  class="form-control" id="inputPassword4" placeholder="correo@correo.com">
+                  <div class="text-danger"
+                    *ngIf="FormularioRegistro.get('Correo')?.hasError('required') && FormularioRegistro.get('Correo')?.touched">
+                      <span>El correo es un campo obligatorio</span>
+                    
+                    </div>
+                </div>
+              <div class="mb-3">
+                <label for="inputPassword4">Contraseña</label>
+                  <input type="text" formControlName="Contraseña"
+                  class="form-control" id="inputPassword4" placeholder="Contraseña">
+                  <div class="text-danger"
+                  *ngIf="FormularioRegistro.get('Contraseña')?.hasError('required') && FormularioRegistro.get('Contraseña')?.touched">
+                  
+                  <span>La contraseña es un campo obligatorio</span>
+                  </div>
+                </div>
+              <div class="mb-3">
+                <label for="inputAddress">Direccion</label>
+                <input type="text" formControlName="Direccion"
+                class="form-control" id="inputAddress" placeholder="1234 Main St">
+                <div class="text-danger"
+                *ngIf="FormularioRegistro.get('Direccion')?.hasError('required') && FormularioRegistro.get('Direccion')?.touched">
+                <span>La dirección es un campo obligatorio</span>
+                </div>
+              </div>
+              <div class="mb-3">
+                
+                <label for="inputAddress2">Departamento</label>
+                <select id="inputState" formControlName="Departamento"
+                class="form-control">
+                
+                  <option selected>Seleccione </option>
+                  <option>Atlántida</option>
+                  <option>Choluteca</option>
+                  <option>Colón</option>
+                  <option>Copán</option>
+                  <option>Cortés</option>
+                  <option>Comayagua</option>
+                  <option>El Paraíso</option>
+                  <option>Francisco Morazán</option>
+                  <option>Gracias a Dios</option>
+                  <option>Intibucá</option>
+                  <option>Islas de la Bahía</option>
+                  <option>La Paz</option>
+                  <option>Lempira</option>
+                  <option>Ocotepeque</option>
+                  <option>Olancho</option>
+                  <option>Santa Bárbara </option>
+                  <option>Valle</option>
+                  <option>Yoro</option>
+    
+                </select> 
+                <div class="text-danger"
+                *ngIf="FormularioRegistro.get('Departamento')?.hasError('required') && FormularioRegistro.get('Departamento')?.touched">
+                <span>El departamento es un campo obligatorio</span>
+                </div>
+              </div>
+              <div class="mb-3">
+                <div class="form-check">
+                  <input class="form-check-input" type="checkbox" formControlName="Terminos"
+                  id="gridCheck">
+                  <label class="form-check-label" for="gridCheck">
+                    Acepto los <a href="#">términos y condiciones</a>
+                  </label>
+                  <div class="text-danger"
+                *ngIf="FormularioRegistro.get('Terminos')?.hasError('required') && FormularioRegistro.get('Terminos')?.touched">
+                <span>Los Terminos es un campo obligatorio</span>
+                </div>
+                </div>
+              </div><hr>
+              
+              
+              <div class="mb-3">
+                <label class="inicioS">¿Ya tienes cuenta? <a href="" routerLink="/inicio"> Inicia Sesión</a></label>
+                <button type="submit" [disabled]="FormularioRegistro.invalid" class="btn btn-success btn-lg float-end">Registrarme</button>
+                <button class="btn btn-secondary btn-lg float-start" routerLink="/landing">Atrás</button>
+              </div>
+              
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>  
+  </div>
